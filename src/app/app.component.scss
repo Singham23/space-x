@@ -1,0 +1,16 @@
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+.img {
+  height: 10em;
+  width: 10em;
+}
+@media screen and (max-width: 1024px) and (min-width: 600px) {
+  .img {
+    height: 6em;
+    width: 5em;
+  }
+}
+.text-link {
+  color: #007bff;
+}

@@ -1,21 +1,73 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container-fluid bg-light pl-4 pr-4">
+  <h2>SpaceX Launch Programs</h2>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-2 pl-0 mb-3">
+          <div class="row">
+            <div class="col-sm-12">
+              <app-filter
+                (yearChangeEvent)="yearChangeEventHandler($event)"
+                (launchChangeEvent)="launchChangeEventHandler($event)"
+                (landingChangeEvent)="landingChangeEventHandler($event)"
+              ></app-filter>
+            </div>
+          </div>
+        </div>
 
-<router-outlet></router-outlet>
+        <div class="col-sm-10 pl-0">
+          <div class="row">
+            <div class="col-sm-3" *ngFor="let item of dataToDisplay">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="bg-light text-center">
+                    <img
+                      class="img"
+                      alt="No image Avaible"
+                      src="{{ item?.links?.mission_patch_small }}"
+                    />
+                  </div>
+                  <div href="#" class="text-link mb-2 mt-1">
+                    {{ item?.mission_name + "#" + item?.flight_number }}
+                  </div>
+                  <div>
+                    <label class="font-weight-bold">Mission Ids:</label>&nbsp;
+                    <label class="font-weight-light">{{
+                      item?.mission_id || "NA"
+                    }}</label>
+                  </div>
+                  <div>
+                    <label class="font-weight-bold">Launch Year:</label>&nbsp;
+                    <label class="font-weight-light">{{
+                      item?.launch_year || ""
+                    }}</label>
+                  </div>
+                  <div>
+                    <label class="font-weight-bold">Successful Lunch:</label
+                    >&nbsp;
+                    <label class="font-weight-light">{{
+                      item?.launch_success || "false"
+                    }}</label>
+                  </div>
+                  <div>
+                    <label class="font-weight-bold">Successful Land:</label
+                    >&nbsp;
+                    <label class="font-weight-light">{{
+                      item?.launch_success || "false"
+                    }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              *ngIf="dataToDisplay.length === 0"
+              class="col-sm-6 text-center font-weight-bold"
+            >
+              No Data available!!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
