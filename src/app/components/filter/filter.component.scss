@@ -5,3 +5,8 @@
   background-color: #35a34ef7;
   border-color: #35a34ef7;
 }
+@media screen and (max-width: 450px) and (min-width: 300px) {
+  .btn {
+    width: 45%;
+  }
+}

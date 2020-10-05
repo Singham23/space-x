@@ -9,6 +9,7 @@ import { SpaceService } from "./services/space.service";
 })
 export class AppComponent implements OnInit {
   title = "space-x";
+  developerName: string = "Saurabh Kumar";
   errorMessage: string;
   allSpacePrograms: any = [];
   dataToDisplay: any = [];
@@ -38,8 +39,14 @@ export class AppComponent implements OnInit {
         return Number(data.launch_year) === this.yearValue;
       });
     }
+    this.router.navigate(["/launces"], {
+      queryParams: {
+        launch_success: this.launchValue,
+        land_success: this.landingValue,
+        launch_year: this.yearValue,
+      },
+    });
     console.log("2", this.dataToDisplay);
-    // this.router.navigateByUrl("/page?id=37&username=jimmy");
   }
   landingChangeEventHandler($event: any) {
     this.launchFlag = true;
@@ -57,6 +64,13 @@ export class AppComponent implements OnInit {
       });
       console.log("3", this.dataToDisplay);
     }
+    this.router.navigate(["/launces"], {
+      queryParams: {
+        launch_success: this.launchValue,
+        land_success: this.landingValue,
+        launch_year: this.yearValue,
+      },
+    });
   }
   launchChangeEventHandler($event: any) {
     this.launchFlag = true;
@@ -73,6 +87,13 @@ export class AppComponent implements OnInit {
         return data.launch_success === this.launchValue;
       });
     }
+    this.router.navigate(["/launces"], {
+      queryParams: {
+        launch_success: this.launchValue,
+        land_success: this.landingValue,
+        launch_year: this.yearValue,
+      },
+    });
     console.log("4", this.dataToDisplay);
   }
 
